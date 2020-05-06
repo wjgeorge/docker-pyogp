@@ -1,0 +1,8 @@
+FROM ubuntu:18.04
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y libterm-readline-gnu-perl apt-utils
+RUN apt-get install -y curl python2.7 python2.7-dev vim virtualenv mercurial gcc
+RUN hg clone https://bitbucket.org/enus_linden/pyogp.buildout
+RUN cd pyogp.buildout && virtualenv --python=python2.7 . --no-site-packages
+RUN cd pyogp.buildout/bin && . ./activate
+
